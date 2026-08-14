@@ -1,0 +1,1403 @@
+{
+  "protocol": {
+    "rounds": 5,
+    "samples_per_split_per_round": 30,
+    "warmups_per_split_per_round": 5,
+    "l2_eviction_bytes": 268435456,
+    "provider_order": "rotates each round",
+    "timing": "CUDA events around one kernel launch",
+    "output": "BF16 reduction add",
+    "tile": [
+      256,
+      256,
+      64
+    ],
+    "cuda_configurations": {
+      "cuda_s5": {
+        "stages": 5,
+        "epilogue_n": 64,
+        "accumulator_stages": 2
+      },
+      "cuda_s6": {
+        "stages": 6,
+        "epilogue_n": 64,
+        "accumulator_stages": 2
+      }
+    },
+    "cutile_configuration": {
+      "num_ctas": 2,
+      "occupancy": 1,
+      "load_latency": 10
+    },
+    "cutedsl_configuration": {
+      "cta_group": 2,
+      "cluster_shape": [
+        2,
+        1
+      ],
+      "accumulator_stages": 2,
+      "epilogue_warpgroups": 2
+    }
+  },
+  "correctness": {
+    "cuda_s5": {
+      "passed": true,
+      "cases": 29
+    },
+    "cuda_s6": {
+      "passed": true,
+      "cases": 29
+    },
+    "cutedsl": {
+      "passed": true,
+      "cases": 9,
+      "max_mean_relative": 0.00140986918,
+      "max_relative": 0.00536013022,
+      "max_absolute": 0.0435671806
+    },
+    "cutile": {
+      "passed": true,
+      "cases": 9,
+      "max_mean_relative": 0.00140986918,
+      "max_relative": 0.00536013022,
+      "max_absolute": 0.0435671806
+    }
+  },
+  "rounds": {
+    "Qwen3-30B-A3B": [
+      {
+        "round": 1,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034816,
+          "tflops": 740.171,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034816,
+          "tflops": 740.171,
+          "split": 8
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.03072,
+          "tflops": 838.860821,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.032768,
+          "tflops": 786.432002,
+          "split": 8,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 2,
+        "order": [
+          "cuda_s6",
+          "cutedsl",
+          "cutile",
+          "cuda_s5"
+        ],
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034816,
+          "tflops": 740.171,
+          "split": 8
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.030752,
+          "tflops": 837.98791,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.032768,
+          "tflops": 786.432002,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034816,
+          "tflops": 740.171,
+          "split": 8
+        }
+      },
+      {
+        "round": 3,
+        "order": [
+          "cutedsl",
+          "cutile",
+          "cuda_s5",
+          "cuda_s6"
+        ],
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.03072,
+          "tflops": 838.860821,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.032768,
+          "tflops": 786.432002,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034784,
+          "tflops": 740.852,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034768,
+          "tflops": 741.193,
+          "split": 8
+        }
+      },
+      {
+        "round": 4,
+        "order": [
+          "cutile",
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl"
+        ],
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.032768,
+          "tflops": 786.432002,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034816,
+          "tflops": 740.171,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034784,
+          "tflops": 740.852,
+          "split": 8
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.03072,
+          "tflops": 838.860821,
+          "split": 8,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 5,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034816,
+          "tflops": 740.171,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.034816,
+          "tflops": 740.171,
+          "split": 8
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.03072,
+          "tflops": 838.860821,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-30B-A3B",
+          "latency_ms": 0.032768,
+          "tflops": 786.432002,
+          "split": 8,
+          "logical_blocks": 74
+        }
+      }
+    ],
+    "Qwen3-235B-A22B": [
+      {
+        "round": 1,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.088032,
+          "tflops": 1170.929,
+          "split": 16
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.084,
+          "tflops": 1227.134,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.08192,
+          "tflops": 1258.291232,
+          "split": 16,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.090112,
+          "tflops": 1143.901082,
+          "split": 16,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 2,
+        "order": [
+          "cuda_s6",
+          "cutedsl",
+          "cutile",
+          "cuda_s5"
+        ],
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.083968,
+          "tflops": 1227.601,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.08192,
+          "tflops": 1258.291232,
+          "split": 16,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.090112,
+          "tflops": 1143.901082,
+          "split": 16,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.088064,
+          "tflops": 1170.503,
+          "split": 16
+        }
+      },
+      {
+        "round": 3,
+        "order": [
+          "cutedsl",
+          "cutile",
+          "cuda_s5",
+          "cuda_s6"
+        ],
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.081952,
+          "tflops": 1257.7999,
+          "split": 16,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.090144,
+          "tflops": 1143.495008,
+          "split": 16,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.088064,
+          "tflops": 1170.503,
+          "split": 16
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.084,
+          "tflops": 1227.134,
+          "split": 16
+        }
+      },
+      {
+        "round": 4,
+        "order": [
+          "cutile",
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl"
+        ],
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.090128,
+          "tflops": 1143.698009,
+          "split": 16,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.088064,
+          "tflops": 1170.503,
+          "split": 16
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.084,
+          "tflops": 1227.134,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.081952,
+          "tflops": 1257.7999,
+          "split": 16,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 5,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.088064,
+          "tflops": 1170.503,
+          "split": 16
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.083984,
+          "tflops": 1227.367,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.081952,
+          "tflops": 1257.7999,
+          "split": 16,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3-235B-A22B",
+          "latency_ms": 0.090144,
+          "tflops": 1143.495008,
+          "split": 16,
+          "logical_blocks": 74
+        }
+      }
+    ],
+    "Qwen3.5-122B-A10B": [
+      {
+        "round": 1,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 12
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 2
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.049152,
+          "tflops": 1048.575963,
+          "split": 12,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.05328,
+          "tflops": 967.334983,
+          "split": 12,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 2,
+        "order": [
+          "cuda_s6",
+          "cutedsl",
+          "cutile",
+          "cuda_s5"
+        ],
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 2
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.049184,
+          "tflops": 1047.893815,
+          "split": 12,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.05328,
+          "tflops": 967.334983,
+          "split": 12,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.05328,
+          "tflops": 967.335,
+          "split": 12
+        }
+      },
+      {
+        "round": 3,
+        "order": [
+          "cutedsl",
+          "cutile",
+          "cuda_s5",
+          "cuda_s6"
+        ],
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.049184,
+          "tflops": 1047.893815,
+          "split": 12,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053296,
+          "tflops": 967.044577,
+          "split": 12,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 12
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 2
+        }
+      },
+      {
+        "round": 4,
+        "order": [
+          "cutile",
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl"
+        ],
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053264,
+          "tflops": 967.625564,
+          "split": 12,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 12
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 2
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.049184,
+          "tflops": 1047.893815,
+          "split": 12,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 5,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053264,
+          "tflops": 967.626,
+          "split": 12
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.053248,
+          "tflops": 967.916,
+          "split": 2
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.049184,
+          "tflops": 1047.893815,
+          "split": 12,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Qwen3.5-122B-A10B",
+          "latency_ms": 0.05328,
+          "tflops": 967.334983,
+          "split": 12,
+          "logical_blocks": 74
+        }
+      }
+    ],
+    "Llama-4-Scout-17B-16E": [
+      {
+        "round": 1,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.477184,
+          "tflops": 1440.104,
+          "split": 10
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.468992,
+          "tflops": 1465.259,
+          "split": 4
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.474144,
+          "tflops": 1449.337695,
+          "split": 10,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.495616,
+          "tflops": 1386.546808,
+          "split": 10,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 2,
+        "order": [
+          "cuda_s6",
+          "cutedsl",
+          "cutile",
+          "cuda_s5"
+        ],
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.468992,
+          "tflops": 1465.259,
+          "split": 20
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.475168,
+          "tflops": 1446.214354,
+          "split": 10,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.493568,
+          "tflops": 1392.300074,
+          "split": 10,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.475216,
+          "tflops": 1446.068,
+          "split": 10
+        }
+      },
+      {
+        "round": 3,
+        "order": [
+          "cutedsl",
+          "cutile",
+          "cuda_s5",
+          "cuda_s6"
+        ],
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.473088,
+          "tflops": 1452.572825,
+          "split": 10,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.497664,
+          "tflops": 1380.84081,
+          "split": 10,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.477264,
+          "tflops": 1439.863,
+          "split": 10
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.466944,
+          "tflops": 1471.686,
+          "split": 20
+        }
+      },
+      {
+        "round": 4,
+        "order": [
+          "cutile",
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl"
+        ],
+        "cutile": {
+          "provider": "cutile",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.497664,
+          "tflops": 1380.84081,
+          "split": 10,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.477072,
+          "tflops": 1440.442,
+          "split": 10
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.466944,
+          "tflops": 1471.686,
+          "split": 20
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.47304,
+          "tflops": 1452.72021,
+          "split": 10,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 5,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.477184,
+          "tflops": 1440.104,
+          "split": 10
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.469024,
+          "tflops": 1465.159,
+          "split": 20
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.475136,
+          "tflops": 1446.311688,
+          "split": 10,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Llama-4-Scout-17B-16E",
+          "latency_ms": 0.497664,
+          "tflops": 1380.84081,
+          "split": 10,
+          "logical_blocks": 74
+        }
+      }
+    ],
+    "Mixtral-8x7B": [
+      {
+        "round": 1,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.669584,
+          "tflops": 1436.821,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.655424,
+          "tflops": 1467.863,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.668672,
+          "tflops": 1438.781104,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.690208,
+          "tflops": 1393.888001,
+          "split": 8,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 2,
+        "order": [
+          "cuda_s6",
+          "cutedsl",
+          "cutile",
+          "cuda_s5"
+        ],
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.655424,
+          "tflops": 1467.863,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.667712,
+          "tflops": 1440.849753,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.691184,
+          "tflops": 1391.919802,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.66776,
+          "tflops": 1440.746,
+          "split": 8
+        }
+      },
+      {
+        "round": 3,
+        "order": [
+          "cutedsl",
+          "cutile",
+          "cuda_s5",
+          "cuda_s6"
+        ],
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.66768,
+          "tflops": 1440.918761,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.690208,
+          "tflops": 1393.888001,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.668608,
+          "tflops": 1438.919,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.657424,
+          "tflops": 1463.398,
+          "split": 16
+        }
+      },
+      {
+        "round": 4,
+        "order": [
+          "cutile",
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl"
+        ],
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.690224,
+          "tflops": 1393.855682,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.669664,
+          "tflops": 1436.65,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.655392,
+          "tflops": 1467.935,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.667648,
+          "tflops": 1440.98784,
+          "split": 8,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 5,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.667424,
+          "tflops": 1441.471,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.65744,
+          "tflops": 1463.362,
+          "split": 16
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.669696,
+          "tflops": 1436.581244,
+          "split": 8,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x7B",
+          "latency_ms": 0.69224,
+          "tflops": 1389.796421,
+          "split": 8,
+          "logical_blocks": 74
+        }
+      }
+    ],
+    "Mixtral-8x22B": [
+      {
+        "round": 1,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.11824,
+          "tflops": 1474.878,
+          "split": 24
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.122336,
+          "tflops": 1469.495,
+          "split": 1
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.108,
+          "tflops": 1488.508468,
+          "split": 24,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.134624,
+          "tflops": 1453.580601,
+          "split": 24,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 2,
+        "order": [
+          "cuda_s6",
+          "cutedsl",
+          "cutile",
+          "cuda_s5"
+        ],
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.122272,
+          "tflops": 1469.579,
+          "split": 1
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.108,
+          "tflops": 1488.508468,
+          "split": 24,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.135632,
+          "tflops": 1452.290343,
+          "split": 24,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.118208,
+          "tflops": 1474.92,
+          "split": 24
+        }
+      },
+      {
+        "round": 3,
+        "order": [
+          "cutedsl",
+          "cutile",
+          "cuda_s5",
+          "cuda_s6"
+        ],
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.107968,
+          "tflops": 1488.551549,
+          "split": 24,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.136672,
+          "tflops": 1450.96159,
+          "split": 24,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.118224,
+          "tflops": 1474.899,
+          "split": 24
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.124352,
+          "tflops": 1466.86,
+          "split": 1
+        }
+      },
+      {
+        "round": 4,
+        "order": [
+          "cutile",
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl"
+        ],
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.136672,
+          "tflops": 1450.96159,
+          "split": 24,
+          "logical_blocks": 74
+        },
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.119216,
+          "tflops": 1473.592,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.122336,
+          "tflops": 1469.495,
+          "split": 1
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.108,
+          "tflops": 1488.508468,
+          "split": 24,
+          "logical_blocks": 74
+        }
+      },
+      {
+        "round": 5,
+        "order": [
+          "cuda_s5",
+          "cuda_s6",
+          "cutedsl",
+          "cutile"
+        ],
+        "cuda_s5": {
+          "provider": "cuda_s5",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.11928,
+          "tflops": 1473.507,
+          "split": 8
+        },
+        "cuda_s6": {
+          "provider": "cuda_s6",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.12432,
+          "tflops": 1466.902,
+          "split": 1
+        },
+        "cutedsl": {
+          "provider": "cutedsl",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.107968,
+          "tflops": 1488.551549,
+          "split": 24,
+          "logical_blocks": 74
+        },
+        "cutile": {
+          "provider": "cutile",
+          "model": "Mixtral-8x22B",
+          "latency_ms": 1.134672,
+          "tflops": 1453.519133,
+          "split": 24,
+          "logical_blocks": 74
+        }
+      }
+    ]
+  },
+  "results": [
+    {
+      "name": "Qwen3-30B-A3B",
+      "tokens": 8192,
+      "hidden": 2048,
+      "intermediate": 768,
+      "experts": 8,
+      "cuda_s5_latency_ms": 0.034816,
+      "cuda_s5_tflops": 740.171,
+      "cuda_s5_split": 8,
+      "cuda_s6_latency_ms": 0.034816,
+      "cuda_s6_tflops": 740.171,
+      "cuda_s6_split": 8,
+      "cutedsl_latency_ms": 0.03072,
+      "cutedsl_tflops": 838.860821,
+      "cutedsl_split": 8,
+      "cutile_latency_ms": 0.032768,
+      "cutile_tflops": 786.432002,
+      "cutile_split": 8,
+      "cutedsl_over_cuda_s5": 1.1333333333333333,
+      "cutedsl_over_cuda_s6": 1.1333333333333333,
+      "cutile_over_cuda_s5": 1.0625,
+      "cutile_over_cuda_s6": 1.0625,
+      "cutedsl_over_cutile": 1.0666666666666667
+    },
+    {
+      "name": "Qwen3-235B-A22B",
+      "tokens": 8192,
+      "hidden": 4096,
+      "intermediate": 1536,
+      "experts": 8,
+      "cuda_s5_latency_ms": 0.088064,
+      "cuda_s5_tflops": 1170.503,
+      "cuda_s5_split": 16,
+      "cuda_s6_latency_ms": 0.084,
+      "cuda_s6_tflops": 1227.134,
+      "cuda_s6_split": 16,
+      "cutedsl_latency_ms": 0.081952,
+      "cutedsl_tflops": 1257.7999,
+      "cutedsl_split": 16,
+      "cutile_latency_ms": 0.090128,
+      "cutile_tflops": 1143.698009,
+      "cutile_split": 16,
+      "cutedsl_over_cuda_s5": 1.0745802420929325,
+      "cutedsl_over_cuda_s6": 1.024990238188208,
+      "cutile_over_cuda_s5": 0.9770992366412214,
+      "cutile_over_cuda_s6": 0.9320078111130837,
+      "cutedsl_over_cutile": 1.0997657165169856
+    },
+    {
+      "name": "Qwen3.5-122B-A10B",
+      "tokens": 8192,
+      "hidden": 3072,
+      "intermediate": 1024,
+      "experts": 8,
+      "cuda_s5_latency_ms": 0.053248,
+      "cuda_s5_tflops": 967.916,
+      "cuda_s5_split": 12,
+      "cuda_s6_latency_ms": 0.053248,
+      "cuda_s6_tflops": 967.916,
+      "cuda_s6_split": 2,
+      "cutedsl_latency_ms": 0.049184,
+      "cutedsl_tflops": 1047.893815,
+      "cutedsl_split": 12,
+      "cutile_latency_ms": 0.05328,
+      "cutile_tflops": 967.334983,
+      "cutile_split": 12,
+      "cutedsl_over_cuda_s5": 1.0826284970722186,
+      "cutedsl_over_cuda_s6": 1.0826284970722186,
+      "cutile_over_cuda_s5": 0.9993993993993994,
+      "cutile_over_cuda_s6": 0.9993993993993994,
+      "cutedsl_over_cutile": 1.0832791151594015
+    },
+    {
+      "name": "Llama-4-Scout-17B-16E",
+      "tokens": 8192,
+      "hidden": 5120,
+      "intermediate": 8192,
+      "experts": 8,
+      "cuda_s5_latency_ms": 0.477184,
+      "cuda_s5_tflops": 1440.104,
+      "cuda_s5_split": 10,
+      "cuda_s6_latency_ms": 0.468992,
+      "cuda_s6_tflops": 1465.259,
+      "cuda_s6_split": 20,
+      "cutedsl_latency_ms": 0.474144,
+      "cutedsl_tflops": 1449.337695,
+      "cutedsl_split": 10,
+      "cutile_latency_ms": 0.497664,
+      "cutile_tflops": 1380.84081,
+      "cutile_split": 10,
+      "cutedsl_over_cuda_s5": 1.0064115542957413,
+      "cutedsl_over_cuda_s6": 0.9891341027198488,
+      "cutile_over_cuda_s5": 0.9588477366255144,
+      "cutile_over_cuda_s6": 0.9423868312757202,
+      "cutedsl_over_cutile": 1.0496051832354727
+    },
+    {
+      "name": "Mixtral-8x7B",
+      "tokens": 8192,
+      "hidden": 4096,
+      "intermediate": 14336,
+      "experts": 8,
+      "cuda_s5_latency_ms": 0.668608,
+      "cuda_s5_tflops": 1438.919,
+      "cuda_s5_split": 8,
+      "cuda_s6_latency_ms": 0.655424,
+      "cuda_s6_tflops": 1467.863,
+      "cuda_s6_split": 16,
+      "cutedsl_latency_ms": 0.667712,
+      "cutedsl_tflops": 1440.849753,
+      "cutedsl_split": 8,
+      "cutile_latency_ms": 0.690224,
+      "cutile_tflops": 1393.855682,
+      "cutile_split": 8,
+      "cutedsl_over_cuda_s5": 1.0013418959072176,
+      "cutedsl_over_cuda_s6": 0.9815968561295888,
+      "cutile_over_cuda_s5": 0.968682630566309,
+      "cutile_over_cuda_s6": 0.9495815851086025,
+      "cutedsl_over_cutile": 1.0337151346688391
+    },
+    {
+      "name": "Mixtral-8x22B",
+      "tokens": 8192,
+      "hidden": 6144,
+      "intermediate": 16384,
+      "experts": 8,
+      "cuda_s5_latency_ms": 1.11824,
+      "cuda_s5_tflops": 1474.878,
+      "cuda_s5_split": 24,
+      "cuda_s6_latency_ms": 1.122336,
+      "cuda_s6_tflops": 1469.495,
+      "cuda_s6_split": 1,
+      "cutedsl_latency_ms": 1.108,
+      "cutedsl_tflops": 1488.508468,
+      "cutedsl_split": 24,
+      "cutile_latency_ms": 1.135632,
+      "cutile_tflops": 1452.290343,
+      "cutile_split": 24,
+      "cutedsl_over_cuda_s5": 1.0092418772563174,
+      "cutedsl_over_cuda_s6": 1.0129386281588446,
+      "cutile_over_cuda_s5": 0.9846851797061019,
+      "cutile_over_cuda_s6": 0.9882919819096327,
+      "cutedsl_over_cutile": 1.0249386281588446
+    }
+  ],
+  "geomeans": {
+    "cutedsl_over_cuda_s5": 1.0501182480576359,
+    "cutedsl_over_cuda_s6": 1.0360675036591784,
+    "cutile_over_cuda_s5": 0.9913017580065407,
+    "cutile_over_cuda_s6": 0.9780379873319006,
+    "cutedsl_over_cutile": 1.0593325791829242
+  }
+}

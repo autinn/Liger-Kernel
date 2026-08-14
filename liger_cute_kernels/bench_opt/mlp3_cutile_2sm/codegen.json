@@ -1,0 +1,143 @@
+{
+  "operation": "dA[expert] = dY[expert].T @ Z[expert]",
+  "logical_tile": [
+    256,
+    256,
+    64
+  ],
+  "cta_mode": "2CTA",
+  "providers": {
+    "cuda_s5": {
+      "sass": {
+        "utchmma_1cta_static": 0,
+        "utchmma_2cta_static": 8,
+        "utma_load_2cta_static": 4,
+        "utma_reduce_add_static": 4,
+        "cga_barrier_arrive_static": 3,
+        "cga_barrier_wait_static": 3,
+        "local_load_store_static": 0
+      },
+      "artifacts": {
+        "sass": {
+          "path": "artifacts/cuda_s5.sass",
+          "bytes": 755061,
+          "sha256": "26973090b5a8ea28c61a9d8832e66eda31396db4e916e57c38c9439827dfad16"
+        },
+        "resources": {
+          "path": "artifacts/cuda_s5_resources.txt",
+          "bytes": 2444,
+          "sha256": "8374b7b5a677389985d4d4236acb82cb09cbfdd57c7328fc5c20678ed93b029f"
+        }
+      }
+    },
+    "cuda_s6": {
+      "sass": {
+        "utchmma_1cta_static": 0,
+        "utchmma_2cta_static": 8,
+        "utma_load_2cta_static": 4,
+        "utma_reduce_add_static": 4,
+        "cga_barrier_arrive_static": 3,
+        "cga_barrier_wait_static": 3,
+        "local_load_store_static": 0
+      },
+      "artifacts": {
+        "sass": {
+          "path": "artifacts/cuda_s6.sass",
+          "bytes": 759765,
+          "sha256": "3b33fc464f348d5b4161da396bf4c87791c7d7b80fb076aa57e4dfb51694fcfb"
+        },
+        "resources": {
+          "path": "artifacts/cuda_s6_resources.txt",
+          "bytes": 2444,
+          "sha256": "79a5c723d7ac7ffa5cb54520808bc281fdf5e87b3450b7835f0c14e3ede0507b"
+        }
+      }
+    },
+    "cutile": {
+      "sass": {
+        "utchmma_1cta_static": 0,
+        "utchmma_2cta_static": 4,
+        "utma_load_2cta_static": 4,
+        "utma_reduce_add_static": 4,
+        "cga_barrier_arrive_static": 1,
+        "cga_barrier_wait_static": 1,
+        "local_load_store_static": 0
+      },
+      "cache_key": "255a70edfa1eaec2f23b99a21c9487e319a03d674b3c88009e6dbeda65a8cb90",
+      "artifacts": {
+        "cubin": {
+          "path": "artifacts/cutile.cubin",
+          "bytes": 135576,
+          "sha256": "71ae1f1697ba351396b5c07b9ccccd06be939252612ef3f58e88064d854cb47a"
+        },
+        "sass": {
+          "path": "artifacts/cutile.sass",
+          "bytes": 384651,
+          "sha256": "1e2a6718ddedc773ba0e1b805ff19a6ba8b2b734849ff3cd538f6b2b3404543a"
+        },
+        "resources": {
+          "path": "artifacts/cutile_resources.txt",
+          "bytes": 291,
+          "sha256": "47305d68580a248d1559fdd2691baee7e5f1e0fe728711222941d6bd9adf9a3e"
+        },
+        "tileir_bytecode": {
+          "path": "artifacts/cutile_dump/cutile_mlp3_2sm_kernel.cutile.ln22.g9dtptr1.tileirbc",
+          "bytes": 2931,
+          "sha256": "e88fbe4e44a54d3d38cb14f13c8127a6289c0648be70a440fad4d18d667bb368"
+        }
+      }
+    },
+    "cutedsl": {
+      "configuration": {
+        "accumulator_stages": 2,
+        "epilogue_smem_bytes": 32768,
+        "epilogue_stages": 4,
+        "epilogue_warpgroups": 2,
+        "mainloop_smem_bytes": 196608,
+        "mainloop_stages": 6,
+        "smem_budget_bytes": 230400,
+        "tmem_columns": 512
+      },
+      "sass": {
+        "utchmma_1cta_static": 0,
+        "utchmma_2cta_static": 4,
+        "utma_load_2cta_static": 4,
+        "utma_reduce_add_static": 4,
+        "cga_barrier_arrive_static": 1,
+        "cga_barrier_wait_static": 1,
+        "local_load_store_static": 0
+      },
+      "ptx": {
+        "tcgen05_mma_2cta_static": 4,
+        "tma_load_2cta_static": 4,
+        "tma_reduce_add_static": 1
+      },
+      "artifacts": {
+        "cubin": {
+          "path": "artifacts/cutedsl.cubin",
+          "bytes": 36136,
+          "sha256": "2bc29025b6486c19a001594e8747b520066fc6b2657b204dfc9d4f37775b651d"
+        },
+        "ptx": {
+          "path": "artifacts/cutedsl.ptx",
+          "bytes": 24346,
+          "sha256": "28d3a1a7c3f7faa4a1046424a893545d91613abf85a594ad631b5016c7b0e23b"
+        },
+        "sass": {
+          "path": "artifacts/cutedsl.sass",
+          "bytes": 254288,
+          "sha256": "b4f696e271266a09f316044a490053d2fc9369934f19c2b9881267f3794131d1"
+        },
+        "resources": {
+          "path": "artifacts/cutedsl_resources.txt",
+          "bytes": 322,
+          "sha256": "b86e854c2b4893dd8626ee8469e784c0f0609231b629bdd27888d0e177d8d726"
+        }
+      }
+    }
+  },
+  "logic_check": {
+    "passed": true,
+    "failures": []
+  }
+}

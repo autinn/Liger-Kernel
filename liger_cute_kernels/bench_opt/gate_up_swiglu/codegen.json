@@ -1,0 +1,131 @@
+{
+  "comparison": {
+    "operation": "Z = SiLU(X @ W_gate[e].T) * (X @ W_up[e].T)",
+    "tile": [
+      128,
+      128,
+      64
+    ],
+    "cta_mode": "1CTA",
+    "math": "approximate reciprocal"
+  },
+  "providers": {
+    "cuda": {
+      "sass": {
+        "utchmma_1cta_static": 16,
+        "utchmma_2cta_static": 0,
+        "utma_load_static": 21,
+        "utma_load_2cta_static": 0,
+        "utma_store_static": 2,
+        "mufu_exp2_static": 64,
+        "mufu_rcp_static": 64,
+        "local_load_store_static": 0
+      },
+      "resources": {
+        "registers": 163,
+        "stack_bytes": 0,
+        "static_shared_bytes": 1024,
+        "local_bytes": 0
+      },
+      "artifacts": {
+        "sass": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cuda.sass",
+          "sha256": "b349dd7529a610380655476176a7fe5919cf201fbc400e0b9e6b3663cbb4a88c"
+        },
+        "cubin": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cuda.cubin",
+          "sha256": "93211007771e253003bfad3334e275f1a510cf9909a1c71f7007a2fa9dff7c2c"
+        },
+        "ptx": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cuda.ptx",
+          "sha256": "aaadf734f83900bf79e85421cfe1636da640c519930f7e4092bae3b86a280f76"
+        }
+      },
+      "ptx": {
+        "tcgen05_mma_1cta_static": 8,
+        "tcgen05_mma_2cta_static": 0,
+        "rcp_approx_static": 64,
+        "exp2_approx_static": 64
+      }
+    },
+    "cutedsl": {
+      "sass": {
+        "utchmma_1cta_static": 8,
+        "utchmma_2cta_static": 0,
+        "utma_load_static": 3,
+        "utma_load_2cta_static": 0,
+        "utma_store_static": 1,
+        "mufu_exp2_static": 32,
+        "mufu_rcp_static": 32,
+        "local_load_store_static": 0
+      },
+      "resources": {
+        "registers": 83,
+        "stack_bytes": 0,
+        "static_shared_bytes": 1024,
+        "local_bytes": 0
+      },
+      "artifacts": {
+        "sass": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cutedsl.sass",
+          "sha256": "09116999bce64b25237ca18e96a81f3b854ea2b800eafb7b9e0bb2865b4978cc"
+        },
+        "cubin": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cutedsl.cubin",
+          "sha256": "a684d1689600b49a07dd90f94f27a0eb8cfde11d93c392cd6c301f29fd1740e6"
+        },
+        "ptx": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cutedsl.ptx",
+          "sha256": "cefd3635b93b06fbe66d17328be4784d449ebcf29536b1d8133f7f361f247414"
+        }
+      },
+      "ptx": {
+        "tcgen05_mma_1cta_static": 8,
+        "tcgen05_mma_2cta_static": 0,
+        "rcp_approx_static": 32,
+        "exp2_approx_static": 32
+      }
+    },
+    "cutile": {
+      "sass": {
+        "utchmma_1cta_static": 8,
+        "utchmma_2cta_static": 0,
+        "utma_load_static": 3,
+        "utma_load_2cta_static": 0,
+        "utma_store_static": 2,
+        "mufu_exp2_static": 128,
+        "mufu_rcp_static": 130,
+        "local_load_store_static": 0
+      },
+      "resources": {
+        "registers": 255,
+        "stack_bytes": 0,
+        "static_shared_bytes": 230604,
+        "local_bytes": 0
+      },
+      "artifacts": {
+        "sass": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cutile.sass",
+          "sha256": "4d14dfb1107159b5f92ff0b96a1c231840c820ee8e78539d24e0abd414388166"
+        },
+        "cubin": {
+          "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cutile.cubin",
+          "sha256": "d9b62779f40bdc9ff16e048dd08255517e186db307d7f818d593645bc8f03080"
+        }
+      },
+      "ptx": {
+        "available": false,
+        "reason": "TileIRAS compiles TileIR bytecode directly to cubin"
+      },
+      "tileir_bytecode": {
+        "path": "/shared/public/sharing/liger-comms-moe/liger_cute_kernels/bench_opt/gate_up_swiglu/artifacts/cutile_dump/cutile_gate_up_swiglu_kernel.cutile.ln25.telql5mp.tileirbc",
+        "sha256": "cb9c82e341a8a852b5eb587a6bb05a71e887bb043c2fe4339fa4e672f9166df7",
+        "bytes": 3439
+      }
+    }
+  },
+  "logic_check": {
+    "passed": true,
+    "failures": []
+  }
+}
