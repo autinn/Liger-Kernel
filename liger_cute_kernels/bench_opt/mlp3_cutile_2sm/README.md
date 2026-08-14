@@ -53,9 +53,9 @@ CUDA/CuTe, CuTe DSL, and cuTile implementation, source-to-SASS mapping,
 apples-to-apples methodology, and interpretation. [`RESULTS.md`](RESULTS.md)
 is the shorter measurement-focused summary.
 
-For the broader programming-model analysis that combines this 2CTA result
-with the gate/up 1CTA CUDA, CuTe DSL, cuTile, and Triton experiment, see
-[`../BLACKWELL_KERNEL_STACK_COMPARISON.md`](../BLACKWELL_KERNEL_STACK_COMPARISON.md).
+For the relationship between this 2CTA result, the gate/up 1CTA comparison,
+and the broader Blackwell optimization reports, see the
+[`bench_opt` navigation guide](../README.md).
 
 In the repeated four-provider campaign, CuTe DSL is `1.0501x` CUDA S5,
 `1.0361x` CUDA S6, and `1.0593x` cuTile. All providers emit the expected

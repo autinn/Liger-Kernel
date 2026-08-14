@@ -15,10 +15,10 @@ Z    = SiLU(gate) * up
 | [`gate_up_swiglu_comparison.md`](gate_up_swiglu_comparison.md) | Authoritative results, protocol, caveats, and explanation of the superseded CUDA headline |
 | [`gate_up_fused_backend_comparison.md`](gate_up_fused_backend_comparison.md) | Focused CUDA, CuTeDSL, cuTile, and Triton fused-provider performance and PTX/SASS evidence |
 | [`cutile_vs_triton_complexity_assessment.md`](cutile_vs_triton_complexity_assessment.md) | cuTile/Triton comparison across Liger-Kernel PRs #1250, #1269, and #1321 |
-| [`../../BLACKWELL_KERNEL_STACK_COMPARISON.md`](../../BLACKWELL_KERNEL_STACK_COMPARISON.md) | Cross-experiment synthesis of CUDA/CuTe, CuTe DSL, cuTile, and Triton using gate/up 1CTA and MLP3 2CTA evidence |
+| [`../../README.md`](../../README.md) | Branch-level map connecting this 1CTA study, the MLP3 2CTA comparison, and the broader Blackwell optimization reports |
 
 Start with the authoritative gate/up report for this experiment. Use the
-top-level Blackwell stack comparison for cross-experiment conclusions; the
+top-level benchmark guide for cross-experiment context; the
 remaining documents answer narrower implementation and cross-kernel questions.
 
 ## Reproduce
